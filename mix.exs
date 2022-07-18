@@ -25,8 +25,8 @@ defmodule Core.MixProject do
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
-  defp elixirc_paths(_), do: ["lib"]
+  defp elixirc_paths(:test), do: ["app", "test/support"]
+  defp elixirc_paths(_), do: ["app"]
 
   # Specifies your project dependencies.
   #
@@ -60,7 +60,7 @@ defmodule Core.MixProject do
     [
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup", "ecto.migrate", "run priv/repo"],
+      "ecto.reset": ["ecto.drop", "ecto.setup", "ecto.migrate"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end

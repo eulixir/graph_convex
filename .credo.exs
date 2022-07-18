@@ -29,7 +29,11 @@
           "apps/*/lib/",
           "apps/*/src/",
           "apps/*/test/",
-          "apps/*/web/"
+          "apps/*/web/",
+          "app/*/lib/",
+          "app/*/src/",
+          "app/*/test/",
+          "app/*/web/"
         ],
         excluded: [~r"/_build/", ~r"/deps/", ~r"/node_modules/"]
       },
