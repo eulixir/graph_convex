@@ -1,5 +1,5 @@
-defmodule ConvexWeb.ErrorView do
-  use ConvexWeb, :view
+defmodule WebAPI.ErrorView do
+  use WebAPI, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.

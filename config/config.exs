@@ -8,13 +8,13 @@
 import Config
 
 config :convex,
-  ecto_repos: [Convex.Repo]
+  ecto_repos: [Core.Repo]
 
 # Configures the endpoint
-config :convex, ConvexWeb.Endpoint,
+config :convex, WebAPI.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: ConvexWeb.ErrorView, accepts: ~w(json), layout: false],
-  pubsub_server: Convex.PubSub,
+  render_errors: [view: WebAPI.ErrorView, accepts: ~w(json), layout: false],
+  pubsub_server: Core.PubSub,
   live_view: [signing_salt: "S0HI+qoi"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :convex, ConvexWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :convex, Convex.Mailer, adapter: Swoosh.Adapters.Local
+config :convex, Core.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

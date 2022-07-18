@@ -1,4 +1,4 @@
-defmodule Convex.Application do
+defmodule Core.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,20 +9,20 @@ defmodule Convex.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Convex.Repo,
+      Core.Repo,
       # Start the Telemetry supervisor
-      ConvexWeb.Telemetry,
+      WebAPI.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Convex.PubSub},
+      {Phoenix.PubSub, name: Core.PubSub},
       # Start the Endpoint (http/https)
-      ConvexWeb.Endpoint
-      # Start a worker by calling: Convex.Worker.start_link(arg)
-      # {Convex.Worker, arg}
+      WebAPI.Endpoint
+      # Start a worker by calling: Core.Worker.start_link(arg)
+      # {Core.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Convex.Supervisor]
+    opts = [strategy: :one_for_one, name: Core.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -30,7 +30,7 @@ defmodule Convex.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    ConvexWeb.Endpoint.config_change(changed, removed)
+    WebAPI.Endpoint.config_change(changed, removed)
     :ok
   end
 end

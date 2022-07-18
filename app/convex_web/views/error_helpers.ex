@@ -1,4 +1,4 @@
-defmodule ConvexWeb.ErrorHelpers do
+defmodule WebAPI.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -25,9 +25,9 @@ defmodule ConvexWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(ConvexWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(WebAPI.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(ConvexWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(WebAPI.Gettext, "errors", msg, opts)
     end
   end
 end

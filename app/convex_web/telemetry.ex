@@ -1,4 +1,4 @@
-defmodule ConvexWeb.Telemetry do
+defmodule WebAPI.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -31,23 +31,23 @@ defmodule ConvexWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("convex.repo.query.total_time",
+      summary("core.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("convex.repo.query.decode_time",
+      summary("core.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("convex.repo.query.query_time",
+      summary("core.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("convex.repo.query.queue_time",
+      summary("core.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("convex.repo.query.idle_time",
+      summary("core.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -65,7 +65,7 @@ defmodule ConvexWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {ConvexWeb, :count_users, []}
+      # {WebAPI, :count_users, []}
     ]
   end
 end

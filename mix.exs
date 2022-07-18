@@ -1,11 +1,11 @@
-defmodule Convex.MixProject do
+defmodule Core.MixProject do
   use Mix.Project
 
   def project do
     [
       app: :convex,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.13.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -19,7 +19,7 @@ defmodule Convex.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Convex.Application, []},
+      mod: {Core.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -33,17 +33,20 @@ defmodule Convex.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.11"},
-      {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.6"},
-      {:postgrex, ">= 0.0.0"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:absinthe_plug, "~> 1.5", override: true},
       {:phoenix_live_dashboard, "~> 0.6"},
-      {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:plug_cowboy, "~> 2.5"},
+      {:phoenix, "~> 1.6.11"},
+      {:absinthe, "~> 1.6.0"},
+      {:postgrex, ">= 0.0.0"},
+      {:ecto_sql, "~> 3.6"},
       {:gettext, "~> 0.18"},
-      {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:swoosh, "~> 1.3"},
+      {:jason, "~> 1.2"}
     ]
   end
 
@@ -57,7 +60,7 @@ defmodule Convex.MixProject do
     [
       setup: ["deps.get", "ecto.setup"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
-      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "ecto.reset": ["ecto.drop", "ecto.setup", "ecto.migrate", "run priv/repo"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
     ]
   end
