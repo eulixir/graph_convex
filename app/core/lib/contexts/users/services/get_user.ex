@@ -2,7 +2,7 @@ defmodule Core.User.Services.GetUser do
   @moduledoc """
   Service to fetcher a user using a given user_id
   """
-  alias Core.Schemas.User
+  alias Core.Domain.Models.User
 
   @spec execute(user_id :: Ecto.UUID.t()) ::
           {:ok, user :: User.t()} | {:error, :not_found}

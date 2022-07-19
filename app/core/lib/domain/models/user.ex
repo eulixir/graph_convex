@@ -1,4 +1,4 @@
-defmodule Core.Schemas.User do
+defmodule Core.Domain.Models.User do
   @moduledoc """
   Schema for a User
   """

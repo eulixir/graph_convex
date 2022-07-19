@@ -43,9 +43,11 @@ defmodule Core.MixProject do
       {:phoenix, "~> 1.6.11"},
       {:absinthe, "~> 1.6.0"},
       {:postgrex, ">= 0.0.0"},
+      {:number, "~> 1.0.1"},
       {:ecto_sql, "~> 3.6"},
       {:gettext, "~> 0.18"},
       {:swoosh, "~> 1.3"},
+      {:tesla, "~> 1.4"},
       {:jason, "~> 1.2"}
     ]
   end

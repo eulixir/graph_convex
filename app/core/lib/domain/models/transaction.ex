@@ -1,9 +1,10 @@
-defmodule Core.Schemas.Transaction do
+defmodule Core.Domain.Models.Transaction do
   @moduledoc """
   Schema for a Transaction
   """
 
   use Core.Schema
+  alias Core.Domain.Models.User
 
   @required ~w(origin_value origin_currency final_currency convertion_tax user_id)a
 
@@ -15,7 +16,7 @@ defmodule Core.Schemas.Transaction do
     field(:final_currency, :string)
     field(:convertion_tax, :float)
 
-    belongs_to(:user, Core.Schemas.User)
+    belongs_to(:user, User)
 
     timestamps()
   end
