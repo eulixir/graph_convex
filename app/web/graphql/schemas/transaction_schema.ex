@@ -1,10 +1,10 @@
-defmodule Graphql.Schema.Transaction do
+defmodule Graphql.Schemas.Transaction do
   use Absinthe.Schema.Notation
 
   alias Graphql.Resolvers.Transactions
 
   object :transaction do
-    field(:origin_value, :float)
+    field(:origin_value, :string)
     field(:origin_currency, :string)
     field(:final_currency, :string)
     field(:convertion_tax, :float)
@@ -14,7 +14,7 @@ defmodule Graphql.Schema.Transaction do
 
   object :transaction_queries do
     field :transaction, type: list_of(:transaction) do
-      arg(:id, non_null(:uuid4))
+      arg(:user_id, non_null(:uuid4))
 
       resolve(&Transactions.list_transactions/2)
     end

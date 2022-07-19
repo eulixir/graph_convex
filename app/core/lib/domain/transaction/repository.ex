@@ -13,5 +13,6 @@ defmodule Core.Domain.Transaction.Repository do
     from(tn in TransactionModel, as: :transaction, select: tn)
     |> Query.by_user_id(user_id)
     |> Repo.all()
+    |> Repo.preload(:user)
   end
 end

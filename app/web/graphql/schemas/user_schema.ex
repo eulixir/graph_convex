@@ -1,4 +1,4 @@
-defmodule Graphql.Schema.User do
+defmodule Graphql.Schemas.User do
   use Absinthe.Schema.Notation
 
   alias Graphql.Resolvers.User

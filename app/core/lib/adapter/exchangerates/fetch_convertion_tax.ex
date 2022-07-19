@@ -7,8 +7,8 @@ defmodule Core.Adapters.FetchConvertionTax.ExchangeRates do
 
   use Tesla
 
-  plug Tesla.Middleware.BaseUrl, "http://api.exchangeratesapi.io/v1/"
-  plug Tesla.Middleware.JSON
+  plug(Tesla.Middleware.BaseUrl, "http://api.exchangeratesapi.io/v1/")
+  plug(Tesla.Middleware.JSON)
 
   require Logger
 
@@ -29,9 +29,11 @@ defmodule Core.Adapters.FetchConvertionTax.ExchangeRates do
   end
 
   defp fetch_api(currency) do
+    System.get_env("EXCHANGE_RATES_ACCESS_KEY")
+
     get("/latest",
       query: [
-        access_key: System.get_env("EXCHANGE_RATES_ACCESS_KEY"),
+        access_key: "401b216f42467f0e7e15624dadb1db14",
         symbols: currency,
         format: 1
       ]
