@@ -5,10 +5,6 @@ defmodule WebAPI.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/api", WebAPI do
-    pipe_through(:api)
-  end
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -24,6 +20,18 @@ defmodule WebAPI.Router do
 
       live_dashboard("/dashboard", metrics: WebAPI.Telemetry)
     end
+  end
+
+  scope "/" do
+    pipe_through(:api)
+
+    forward("/graphiql", Absinthe.Plug.GraphiQL,
+      schema: Graphql.Schema,
+      interface: :simple,
+      context: %{pubsub: WebAPI.Endpoint}
+    )
+
+    forward("/graphql", Absinthe.Plug, schema: Graphql.Schema, json_code: Jason)
   end
 
   # Enables the Swoosh mailbox preview in development.
