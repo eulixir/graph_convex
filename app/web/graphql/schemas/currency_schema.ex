@@ -6,6 +6,8 @@ defmodule Graphql.Schemas.Currency do
   object :currency do
     field(:origin_value, :string)
     field(:final_currency, :string)
+    field(:converted_value, :string)
+    field(:convertion_tax, :string)
     field(:user_id, :uuid4)
     field(:transaction, :transaction)
   end

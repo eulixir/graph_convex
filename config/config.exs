@@ -38,7 +38,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 config :convex, Core.Ports.FetchConvertionTax,
-  adapter: Core.Adapters.FetchConvertionTax.ExchangeRates
+  adapter: Core.Adapters.FetchConvertionTax.ManualRates
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
