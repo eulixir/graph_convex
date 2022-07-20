@@ -47,6 +47,5 @@ defmodule Graphql.Resolvers.Currency do
       |> Format.format_value_with_precision(2)
       |> Number.Currency.number_to_currency(Format.format_currency(transaction.origin_currency))
     )
-    |> IO.inspect()
   end
 end

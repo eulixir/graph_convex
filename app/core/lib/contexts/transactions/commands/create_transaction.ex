@@ -24,8 +24,6 @@ defmodule Core.Transaction.Commands.CreateTransaction do
 
   @spec changeset(schema :: __MODULE__.t(), params :: map()) :: Ecto.Changeset.t()
   def changeset(schema \\ %__MODULE__{}, params) do
-    IO.inspect(params)
-
     schema
     |> cast(params, @required ++ @optional)
     |> validate_required(@required)

@@ -34,8 +34,10 @@ defmodule Core.MixProject do
   defp deps do
     [
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:ex_machina, "~> 2.7.0", only: [:dev, :test]},
       {:absinthe_plug, "~> 1.5", override: true},
       {:phoenix_live_dashboard, "~> 0.6"},
+      {:hammox, "~> 0.5", only: :test},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:phoenix_ecto, "~> 4.4"},
